@@ -1,8 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Badge } from "./ui/badge"
+import { Button } from "./ui/button"
 import { Calendar, Clock, ArrowRight, MessageSquare, Users, Lightbulb } from "lucide-react"
-import Link from "next/link"
 
 export function Communication() {
   const blogPosts = [
@@ -96,7 +95,7 @@ export function Communication() {
                         </div>
                       </div>
                       <CardTitle className="text-2xl mb-3 hover:text-primary transition-colors">
-                        <Link href={`/blog/${post.title.toLowerCase().replace(/\s+/g, "-")}`}>{post.title}</Link>
+                        <a href={`/blog/${post.title.toLowerCase().replace(/\s+/g, "-")}`}>{post.title}</a>
                       </CardTitle>
                       <p className="text-muted-foreground text-lg leading-relaxed">{post.excerpt}</p>
                     </CardHeader>
@@ -116,10 +115,10 @@ export function Communication() {
                           </div>
                         </div>
                         <Button variant="ghost" size="sm" asChild>
-                          <Link href={`/blog/${post.title.toLowerCase().replace(/\s+/g, "-")}`}>
+                          <a href={`/blog/${post.title.toLowerCase().replace(/\s+/g, "-")}`}>
                             Read More
                             <ArrowRight className="h-4 w-4 ml-2" />
-                          </Link>
+                          </a>
                         </Button>
                       </div>
                     </CardContent>
@@ -146,7 +145,7 @@ export function Communication() {
                   <CardContent>
                     <div className="space-y-3">
                       {categories.map((category, index) => (
-                        <Link
+                        <a
                           key={index}
                           href={`/blog/category/${category.name.toLowerCase()}`}
                           className="flex items-center justify-between p-2 rounded-lg hover:bg-muted transition-colors"
@@ -158,7 +157,7 @@ export function Communication() {
                           <Badge variant="secondary" className="text-xs">
                             {category.count}
                           </Badge>
-                        </Link>
+                        </a>
                       ))}
                     </div>
                   </CardContent>

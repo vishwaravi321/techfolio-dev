@@ -1,9 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Badge } from "./ui/badge"
 import { Calendar, MapPin } from "lucide-react"
-import type { PortfolioVersion } from "@/app/page"
-import { title } from "process"
-import { Description } from "@radix-ui/react-toast"
+import type { PortfolioVersion } from "../App"
 
 interface ExperienceProps {
   version: PortfolioVersion
@@ -13,82 +11,57 @@ export function Experience({ version }: ExperienceProps) {
   const experiences = {
     tech: [
       {
-  title: "ERPNext Developer",
-  company: "Hyper Ready Technology",
-  location: "Coimbatore, Tamil Nadu",
-  period: "2024 - Present",
-  description:
-    "Focused on custom app development and ERPNext customization to support business processes. Collaborated with other teams to build scalable, maintainable modules.",
-  achievements: [
-    "Developed custom ERPNext apps tailored to client workflows",
-    "Wrote client-side and server-side scripts to extend core ERPNext features",
-    "Optimized DocTypes, reports, and workflows to match business logic",
-    "Provided technical support and resolved system-level bugs efficiently",
-  ],
-  technologies: ["ERPNext", "Frappe", "JavaScript", "Python", "MariaDB", "Redis"],
-},
+        title: "Senior Full-Stack Developer",
+        company: "TechCorp Solutions",
+        location: "San Francisco, CA",
+        period: "2022 - Present",
+        description:
+          "Lead full-stack development initiatives combining DevOps practices with ERPNext implementations for enterprise clients.",
+        achievements: [
+          "Reduced deployment time from 2 hours to 15 minutes using CI/CD pipelines",
+          "Implemented 25+ ERPNext customizations for manufacturing clients",
+          "Led migration to Kubernetes, improving scalability by 300%",
+          "Developed custom ERPNext modules serving 10,000+ users",
+        ],
+        technologies: ["AWS", "Kubernetes", "ERPNext", "Python", "Docker", "Terraform"],
+      },
       {
-  title: "Principal Site Reliability Engineer",
-  company: "Nxweb",
-  location: "Coimbatore, Tamil Nadu",
-  period: "2022 - 2024",
-  description:
-    "Solely handled infrastructure, automation, and reliability for all production workloads. Owned everything from CI/CD to backups and monitoring, making sure devs didn’t burn the place down.",
-  achievements: [
-    "Built and maintained production systems from scratch",
-    "Automated deployments and infrastructure using Ansible, Terraform, and shell scripts",
-    "Monitored and debugged incidents, reducing downtime and improving reliability",
-    "Created custom Docker images and pipelines to streamline dev workflows",
-    "Performed ERPNext version upgrades (v12 to v15) with minimal disruptions",
-    "Built internal developer platform (IDP) to standardize local dev environments",
-  ],
-  technologies: [
-    "ERPNext",
-    "Docker",
-    "Ansible",
-    "Terraform",
-    "GitHub Actions",
-    "MariaDB",
-    "Redis",
-    "Linux",
-    "Prometheus",
-    "Grafana"
-  ],
-},
-
-{
-  title: "EDP Coordinator & ERPNext Consultant",
-  company: "Sri Sasthaa Constructions",
-  location: "Coimbatore, Tamil Nadu",
-  period: "2021 - 2022",
-  description:
-    "Led ERPNext implementation and supported day-to-day tech operations. This role marked the beginning of my journey into tech, where I balanced software deployment with basic hardware troubleshooting.",
-  achievements: [
-    "Implemented ERPNext modules for HR, Inventory, and Project Management",
-    "Trained staff to use ERPNext effectively, reducing paperwork and confusion",
-    "Handled basic tech issues like PC troubleshooting, printer setup, and network hiccups",
-    "Created basic scripts and templates to support repetitive tasks",
-  ],
-  technologies: ["ERPNext", "PC and Hardwares"]
-}
-
+        title: "DevOps Engineer & ERP Specialist",
+        company: "StartupXYZ",
+        location: "Austin, TX",
+        period: "2020 - 2022",
+        description:
+          "Built cloud infrastructure and implemented ERPNext solutions, bridging the gap between operations and business applications.",
+        achievements: [
+          "Set up comprehensive monitoring reducing MTTR by 60%",
+          "Successfully implemented ERPNext for 15+ organizations",
+          "Automated infrastructure provisioning saving 20 hours/week",
+          "Developed custom integrations between ERPNext and third-party systems",
+        ],
+        technologies: ["Azure", "ERPNext", "Frappe", "Ansible", "Python", "JavaScript"],
+      },
+      {
+        title: "Systems Administrator & Developer",
+        company: "Enterprise Inc",
+        location: "Chicago, IL",
+        period: "2019 - 2020",
+        description:
+          "Managed infrastructure while developing business applications, gaining experience in both technical operations and business processes.",
+        achievements: [
+          "Migrated legacy systems to cloud reducing costs by 40%",
+          "Built custom business applications using Python and JavaScript",
+          "Maintained 99.9% uptime for critical systems",
+          "Automated business processes reducing manual work by 70%",
+        ],
+        technologies: ["Linux", "Python", "JavaScript", "AWS", "MySQL", "Docker"],
+      },
     ],
     freelancing: [
-      {
-        title: "Independent PC Hardware Consultant",
-        company: "Local Clients",
-        location: "Devakottai",
-        period: "2022",
-        description: "Providing custom PC building, optimization, and consulting services tailored for power users, gamers, developers, and businesses worldwide.",
-        achievements: ["Built 25+ custom PCs tailored for gaming, development, and productivity use-cases","Specialized in budget-to-midrange optimization, delivering maximum power per rupee","Handled end-to-end service: requirement analysis, component sourcing, assembly, OS setup, and post-build support","Built a loyal client base through referrals and word-of-mouth, leading to repeat business","Known locally for fast builds, clean cable management, and no-bullshit advice"],
-        technologies: ["Custom PC Assembly & Optimization","Hardware Compatibility & Troubleshooting","OS Installation & Driver Configuration","Client Support & Post-Build Maintenance"]
-
-      },
       {
         title: "Independent Technical Consultant",
         company: "Freelance Practice",
         location: "Remote (Global)",
-        period: "2023 - Present",
+        period: "2021 - Present",
         description:
           "Providing comprehensive technical consulting services to businesses worldwide, specializing in DevOps automation and ERPNext implementations.",
         achievements: [
@@ -103,7 +76,7 @@ export function Experience({ version }: ExperienceProps) {
         title: "ERP Implementation Specialist",
         company: "Various Clients",
         location: "Remote",
-        period: "2023 - Present",
+        period: "2020 - Present",
         description:
           "Specialized freelance services for ERPNext implementations, customizations, and business process optimization.",
         achievements: [
@@ -118,7 +91,7 @@ export function Experience({ version }: ExperienceProps) {
         title: "DevOps Automation Consultant",
         company: "Startup & SME Clients",
         location: "Remote",
-        period: "2024 - Present",
+        period: "2019 - Present",
         description:
           "Helping small to medium businesses implement DevOps practices and automate their infrastructure on a freelance basis.",
         achievements: [

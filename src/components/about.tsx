@@ -1,7 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "./ui/card"
+import { Badge } from "./ui/badge"
 import { Award, Users, Zap, Globe, Star, Clock } from "lucide-react"
-import type { PortfolioVersion } from "@/app/page"
+import type { PortfolioVersion } from "../App"
 
 interface AboutProps {
   version: PortfolioVersion
@@ -13,7 +13,7 @@ export function About({ version }: AboutProps) {
       highlights: [
         {
           icon: <Award className="h-6 w-6" />,
-          title: "3+ Years Experience",
+          title: "5+ Years Experience",
           description: "Extensive experience in DevOps, cloud technologies, and ERP systems",
         },
         {
@@ -28,13 +28,10 @@ export function About({ version }: AboutProps) {
         },
       ],
       description: [
-        "I've been pushing boundaries in tech for over 3 years. I'm a Full-Stack Developer with a DevOps mindset, focused on ERPNext implementations and infrastructure automation.",
-
-"My career has taken me deep into the guts of systems from managing cloud platforms and containerization to setting up CI/CD pipelines and building full-fledged ERP solutions. I don’t just write code; I architect systems that are scalable, maintainable, and built to last.",
-
-"I bring a blend of backend grit, frontend sharpness, and infrastructure discipline so the products I build don’t just function, they deliver actual business impact."
+        "Hi, I'm VISHWA R! Standing at 6'1\", I've been reaching new heights in technology for over 5 years. I'm a passionate Full-Stack Developer specializing in DevOps practices and ERPNext implementations, combining infrastructure expertise with business application development.",
+        "My technical journey spans cloud platforms, containerization, CI/CD pipelines, and comprehensive ERP solutions. I believe in creating robust, scalable systems that not only solve technical challenges but also drive real business value.",
       ],
-      badges: ["Linux Expert", "ERPNext Specialist", "Python Developer",],
+      badges: ["AWS Certified", "Kubernetes Expert", "ERPNext Specialist", "Python Developer", "Terraform Expert"],
     },
     freelancing: {
       highlights: [
@@ -45,7 +42,7 @@ export function About({ version }: AboutProps) {
         },
         {
           icon: <Star className="h-6 w-6" />,
-          title: "20+ Projects Completed",
+          title: "100+ Projects Completed",
           description: "From small automation scripts to enterprise-level ERP implementations",
         },
         {
@@ -55,7 +52,8 @@ export function About({ version }: AboutProps) {
         },
       ],
       description: [
-        "I'm not here to waste your time or mine. I take freelancing seriously,this isn't a side hustle; it's part of how I sharpen my edge. I’ve helped businesses streamline operations with ERPNext, automated infrastructure setups from bare metal to cloud, and built full-stack apps that don’t fall apart when things scale.You need someone who can think like an engineer, not a button pusher. I handle the entire pipeline from setting up CI/CD with GitHub Actions to containerizing your app, writing custom ERP modules, or even cleaning up the mess someone else left behind.No fluff. Just working systems, delivered on time, with zero hand-holding."
+        "Hi, I'm VISHWA R! Standing at 6'1\", I've been reaching new heights in the freelancing world for over 3 years. As an independent consultant, I help businesses transform their operations through custom technology solutions and strategic consulting.",
+        "My freelancing journey has taken me across diverse industries - from startups needing rapid deployment solutions to enterprises requiring complex ERP customizations. I pride myself on delivering high-quality solutions on time and within budget.",
       ],
       badges: ["Freelance Expert", "Business Consultant", "Project Manager", "Client Relations", "Remote Work Pro"],
     },
@@ -72,13 +70,13 @@ export function About({ version }: AboutProps) {
           <div className="text-center mb-16">
             <div className="relative w-48 h-48 mx-auto mb-8">
               <img
-                src="/profile.jpeg?height=192&width=192"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=192&h=192&fit=crop&crop=face"
                 alt="VISHWA R - Professional Photo"
                 className="w-full h-full rounded-full object-cover border-4 border-primary/20 shadow-lg"
               />
             </div>
             <h3 className="text-2xl font-bold mb-2">VISHWA R</h3>
-            <p className="text-muted-foreground mb-4">A Professional Knowledge Hunter</p>
+            <p className="text-muted-foreground mb-4">Height: 6'1" | Professional Developer & Problem Solver</p>
 
             {/* Funny joke section */}
             <div className="bg-muted/50 dark:bg-muted/20 rounded-lg p-6 max-w-2xl mx-auto border border-border/50">

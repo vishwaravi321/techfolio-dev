@@ -1,12 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
+import { useLocation } from "react-router-dom"
+import { Button } from "./ui/button"
 import { Menu, X, Code, Briefcase } from "lucide-react"
-import type { PortfolioVersion } from "@/app/page"
-import { ThemeToggle } from "@/components/theme-toggle"
+import type { PortfolioVersion } from "../App"
+import { ThemeToggle } from "./theme-toggle"
 
 interface HeaderProps {
   version?: PortfolioVersion
@@ -16,8 +15,8 @@ interface HeaderProps {
 export function Header({ version, setVersion }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const pathname = usePathname()
-  const isHomePage = pathname === "/"
+  const location = useLocation()
+  const isHomePage = location.pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +39,18 @@ export function Header({ version, setVersion }: HeaderProps) {
     { href: "/communication", label: "Communication" },
   ]
 
+  const handleNavClick = (href: string) => {
+    if (href.startsWith("#")) {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    } else {
+      window.location.href = href
+    }
+    setIsMenuOpen(false)
+  }
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -48,9 +59,9 @@ export function Header({ version, setVersion }: HeaderProps) {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold">
+          <a href="/" className="text-xl font-bold">
             VISHWA R
-          </Link>
+          </a>
 
           {/* Version Selector - Only show on home page */}
           {isHomePage && version && setVersion && (
@@ -81,26 +92,26 @@ export function Header({ version, setVersion }: HeaderProps) {
             <nav className="flex space-x-8">
               {isHomePage
                 ? navItems.map((item) => (
-                    <Link
+                    <button
                       key={item.href}
-                      href={item.href}
+                      onClick={() => handleNavClick(item.href)}
                       className="text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {item.label}
-                    </Link>
+                    </button>
                   ))
                 : pageNavItems.map((item) => (
-                    <Link
+                    <a
                       key={item.href}
                       href={item.href}
                       className={`transition-colors ${
-                        pathname === item.href
+                        location.pathname === item.href
                           ? "text-foreground font-medium"
                           : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
                       {item.label}
-                    </Link>
+                    </a>
                   ))}
             </nav>
             <ThemeToggle />
@@ -141,18 +152,17 @@ export function Header({ version, setVersion }: HeaderProps) {
 
             {/* Navigation Items */}
             {(isHomePage ? navItems : pageNavItems).map((item) => (
-              <Link
+              <button
                 key={item.href}
-                href={item.href}
-                className={`block py-2 transition-colors ${
-                  !isHomePage && pathname === item.href
+                onClick={() => handleNavClick(item.href)}
+                className={`block py-2 transition-colors text-left w-full ${
+                  !isHomePage && location.pathname === item.href
                     ? "text-foreground font-medium"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
-              </Link>
+              </button>
             ))}
             <div className="pt-4 border-t">
               <div className="flex justify-between items-center">

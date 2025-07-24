@@ -5,10 +5,6 @@ import {
   Database,
   GitBranch,
   Monitor,
-  Container,
-  Building,
-  Zap,
-  BarChart,
   Shield,
   Users,
   Cog,
@@ -27,67 +23,36 @@ interface SkillsProps {
 export function Skills({ version }: SkillsProps) {
   const skillCategories = {
     tech: [
-          {
-      icon: <Cloud className="h-6 w-6" />,
-      title: "Cloud Platforms",
-      skills: ["AWS", "Azure", "Google Cloud", "DigitalOcean", "Linode"],
-    },
-    {
-      icon: <Container className="h-6 w-6" />,
-      title: "Containerization",
-      skills: ["Docker", "Kubernetes", "OpenShift", "Helm", "Docker Compose"],
-    },
-    {
-      icon: <GitBranch className="h-6 w-6" />,
-      title: "CI/CD & Version Control",
-      skills: ["Jenkins", "GitLab CI", "GitHub Actions", "Git", "ArgoCD"],
-    },
-    {
-      icon: <Database className="h-6 w-6" />,
-      title: "Infrastructure as Code",
-      skills: ["Terraform", "Ansible", "CloudFormation", "Pulumi", "Chef"],
-    },
-    {
-      icon: <Monitor className="h-6 w-6" />,
-      title: "Monitoring & Logging",
-      skills: ["Prometheus", "Grafana", "ELK Stack", "Datadog", "New Relic"],
-    },
-    {
-      icon: <Shield className="h-6 w-6" />,
-      title: "Security & Compliance",
-      skills: ["HashiCorp Vault", "OWASP", "SSL/TLS", "IAM", "Security Scanning"],
-    },
-    // ERPNext
-    {
-      icon: <Building className="h-6 w-6" />,
-      title: "ERPNext Core Modules",
-      skills: ["Accounting", "Sales", "Purchase", "Inventory", "Manufacturing", "HR"],
-    },
-    {
-      icon: <Cog className="h-6 w-6" />,
-      title: "Customization & Development",
-      skills: ["Frappe Framework", "Python", "JavaScript", "Custom Apps", "DocTypes"],
-    },
-    {
-      icon: <Database className="h-6 w-6" />,
-      title: "Database & Integration",
-      skills: ["MariaDB", "MySQL", "REST API", "Webhooks", "Data Migration"],
-    },
-    {
-      icon: <Users className="h-6 w-6" />,
-      title: "Business Process",
-      skills: ["Workflow Design", "User Training", "Change Management", "Process Optimization"],
-    },
-    {
-      icon: <BarChart className="h-6 w-6" />,
-      title: "Reporting & Analytics",
-      skills: ["Custom Reports", "Dashboards", "Query Builder", "Data Visualization"],
-    },
-    {
-      icon: <Zap className="h-6 w-6" />,
-      title: "Deployment & Maintenance",
-      skills: ["Frappe Bench", "Docker", "Linux", "Backup Strategies", "Performance Tuning"],
-    },
+      {
+        icon: <Cloud className="h-6 w-6" />,
+        title: "Cloud & Infrastructure",
+        skills: ["AWS", "Azure", "Google Cloud", "Terraform", "Ansible", "Docker", "Kubernetes"],
+      },
+      {
+        icon: <GitBranch className="h-6 w-6" />,
+        title: "DevOps & CI/CD",
+        skills: ["Jenkins", "GitLab CI", "GitHub Actions", "ArgoCD", "Helm", "Docker Compose"],
+      },
+      {
+        icon: <Database className="h-6 w-6" />,
+        title: "ERPNext & ERP Systems",
+        skills: ["ERPNext", "Frappe Framework", "Custom Apps", "Workflow Design", "Data Migration"],
+      },
+      {
+        icon: <Cog className="h-6 w-6" />,
+        title: "Programming & Development",
+        skills: ["Python", "JavaScript", "Node.js", "React", "FastAPI", "REST APIs"],
+      },
+      {
+        icon: <Monitor className="h-6 w-6" />,
+        title: "Monitoring & Analytics",
+        skills: ["Prometheus", "Grafana", "ELK Stack", "Custom Reports", "Dashboards"],
+      },
+      {
+        icon: <Shield className="h-6 w-6" />,
+        title: "Security & Compliance",
+        skills: ["HashiCorp Vault", "SSL/TLS", "IAM", "Security Scanning", "OWASP"],
+      },
     ],
     freelancing: [
       {

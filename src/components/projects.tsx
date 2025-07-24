@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+"use client"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Button } from "./ui/button"
+import { Badge } from "./ui/badge"
 import { ExternalLink, Github, DollarSign, Users, Clock } from "lucide-react"
-import Link from "next/link"
-import type { PortfolioVersion } from "@/app/page"
+import type { PortfolioVersion } from "../App"
 
 interface ProjectsProps {
   version: PortfolioVersion
@@ -13,73 +13,12 @@ export function Projects({ version }: ProjectsProps) {
   const projects = {
     tech: [
       {
-  title: "Internal Developer Platform (IDP) for Frappe",
-  description:
-    "Built an Internal Developer Platform using Docker and Docker Compose to let devs spin up Frappe apps on their machines without begging SREs.",
-  technologies: ["Docker", "Docker Compose", "GitHub Actions", "Frappe", "CI/CD"],
-  github: "https://github.com/vishwaravi321/frappe_docker", 
-  highlights: [
-    "Abstracted dev environment setup into a single Docker Compose file",
-    "Integrated GitHub Actions to build & push Docker images daily",
-    "Reduced environment setup time from hours to minutes",
-    "Made devs independent of infra team for local testing",
-  ],
-}
-,
-      {
-  title: "Bare-Metal Frappe Installation Script",
-  description:
-    "Created a raw Bash script to automate Frappe installation with all dependencies on bare-metal Linux servers. No containers, no crap.",
-  technologies: ["Bash", "Frappe", "Bench","Linux"],
-  github: "https://github.com/vishwaravi321/ERP-installation.git",
-  highlights: [
-    "Automated setup of Frappe, Bench, and system dependencies",
-    "Handled Redis, MariaDB, Node, and Python environment installs",
-    "Built for non-containerized, production-ready environments",
-    "Simple, fast, and reproducible install process",
-  ],
-},
-{
-  title: "Complete SRE Monitoring Stack with Alerting",
-  description:
-    "Deployed a full observability stack using Prometheus, Grafana, Node Exporter, Blackbox Exporter, and Alertmanager integrated with Telegram for real-time alerting.",
-  technologies: ["Prometheus", "Grafana", "Node Exporter", "Blackbox Exporter", "Alertmanager", "Telegram", "Docker", "Linux"],
-  highlights: [
-    "Provisioned production-grade monitoring for bare metal and cloud instances",
-    "Configured custom alerts and routing in Alertmanager for Telegram notifications",
-    "Implemented Blackbox probes for HTTP/HTTPS endpoint monitoring",
-    "Set up Grafana dashboards for infrastructure and service metrics",
-  ],
-},
-{
-  title: "Self-Hosted Passbolt for Business Credential Management",
-  description:
-    "Manually deployed and configured Passbolt on a Linux server to securely manage business credentials and enable team-based access.",
-  technologies: ["Passbolt", "Nginx", "GPG", "Linux", "PostgreSQL"],
-  highlights: [
-    "Installed and configured Passbolt on bare-metal without containerization",
-    "Set up HTTPS with proper domain and TLS configuration via Nginx",
-    "Managed GPG key setup and secure user access workflows",
-    "Implemented regular backups and basic monitoring for uptime assurance",
-  ],
-},
-{
-  title: "WhatsApp Messaging Integration via WABA",
-  description:
-    "Developed a custom Frappe app to send WhatsApp messages using Meta's WhatsApp Business API (WABA) for automated customer communication.",
-  technologies: ["Frappe", "Meta's WABA", "REST API", "WhatsApp Business","Python"],
-  highlights: [
-    "Built a reusable Frappe module for sending templated WhatsApp messages",
-    "Integrated with Meta WABA using access tokens and message templates",
-    "Enabled real-time customer notifications for key workflows",
-    "Tested and deployed on production with scalable API usage",
-  ],
-},
-      {
         title: "Enterprise ERPNext with DevOps Pipeline",
         description:
           "Complete ERPNext implementation with automated CI/CD pipeline, containerized deployment, and multi-environment setup for a manufacturing company.",
-        technologies: ["ERPNext", "Docker", "GitHub Actions", "Hetzner", "Terraform","Ansible"],
+        technologies: ["ERPNext", "Docker", "Kubernetes", "GitLab CI", "AWS", "Terraform"],
+        github: "https://github.com",
+        demo: "https://demo.example.com",
         highlights: [
           "Reduced deployment time from 4 hours to 20 minutes",
           "Implemented automated testing for custom ERPNext apps",
@@ -88,10 +27,12 @@ export function Projects({ version }: ProjectsProps) {
         ],
       },
       {
-        title: "Cloud Infrastructure Automation",
+        title: "Multi-Cloud Infrastructure Automation",
         description:
-          "Comprehensive Infrastructure as Code solution managing resources in Hetzner with automated deployment pipelines.",
-        technologies: ["Terraform", "Hetzner", "GitHub","GitHub Actions","Ansible"],
+          "Comprehensive Infrastructure as Code solution managing resources across AWS, Azure, and GCP with automated deployment pipelines.",
+        technologies: ["Terraform", "AWS", "Azure", "GCP", "Jenkins", "Python", "Ansible"],
+        github: "https://github.com",
+        demo: "https://monitoring.example.com",
         highlights: [
           "Reduced infrastructure provisioning time by 75%",
           "Implemented cross-cloud disaster recovery",
@@ -99,91 +40,77 @@ export function Projects({ version }: ProjectsProps) {
           "Built reusable Terraform modules for rapid deployment",
         ],
       },
+      {
+        title: "Custom ERPNext Manufacturing Suite",
+        description:
+          "Developed comprehensive manufacturing modules for ERPNext including production planning, quality control, and real-time inventory tracking.",
+        technologies: ["ERPNext", "Frappe Framework", "Python", "JavaScript", "MariaDB", "Redis"],
+        github: "https://github.com",
+        highlights: [
+          "Reduced production planning time by 60%",
+          "Implemented real-time inventory tracking for 10,000+ items",
+          "Automated quality control processes",
+          "Integrated with IoT sensors for real-time monitoring",
+        ],
+      },
     ],
     freelancing: [
       {
-        title: "ERPNext Version Migration (v12 to v15)",
+        title: "Global E-commerce ERP Implementation",
         description:
-        "Handled a full-stack ERPNext migration for a mid-sized enterprise, upgrading core and custom modules from v12 through v15 while preserving data integrity and business continuity.",
-        technologies: ["Linux", "Bench", "MariaDB", "Version Control"],
-        client: "Mid-sized Enterprise Client",
-        value: "$150",
-        duration: "3 hours",
+          "Led a 6-month freelance project implementing ERPNext for an international e-commerce company with multi-currency and multi-warehouse requirements.",
+        technologies: ["ERPNext", "E-commerce Integration", "Multi-currency", "Project Management"],
+        client: "International E-commerce Co.",
+        value: "$45,000",
+        duration: "6 months",
         highlights: [
-          "Migrated from v12 to v15 with zero data loss",
-          "Resolved deprecated API and breaking changes across custom apps",
-          "Optimized database performance post-migration",
-          "Documented and trained internal devs for future upgrades",
+          "Managed remote team of 5 developers across 3 time zones",
+          "Integrated with Shopify, Amazon, and eBay platforms",
+          "Implemented multi-currency accounting system",
+          "Delivered project 2 weeks ahead of schedule",
         ],
-},
+      },
       {
-  title: "ERPNext Local-to-Cloud Migration",
-  description:
-    "Migrated a legacy on-prem ERPNext setup to a production-ready cloud infrastructure, ensuring uptime, data security, and scalability for a growing business.",
-  technologies: ["ERPNext", "Hetzner", "Nginx", "SSL", "MariaDB", "Bench"],
-  client: "Customs Clearance Company",
-  value: "$150",
-  duration: "2 hrs",
-  highlights: [
-    "Lifted and shifted ERPNext from local server to Hetzner instance with zero downtime",
-    "Configured production-grade Nginx reverse proxy with SSL",
-    "Automated daily backups and disaster recovery processes",
-    "Optimized instance performance and cost for sustained usage",
-  ],
-},
+        title: "Startup DevOps Transformation",
+        description:
+          "Complete DevOps transformation for a fintech startup, implementing CI/CD pipelines, cloud infrastructure, and monitoring solutions.",
+        technologies: ["AWS", "Docker", "Jenkins", "Terraform", "Monitoring"],
+        client: "FinTech Startup",
+        value: "$32,000",
+        duration: "4 months",
+        highlights: [
+          "Reduced deployment time from 3 hours to 10 minutes",
+          "Implemented automated testing and security scanning",
+          "Set up cost-optimized cloud infrastructure",
+          "Provided ongoing support and maintenance",
+        ],
+      },
       {
-  title: "ERPNext Customization & Print Format Development",
-  description:
-    "Delivered tailored customizations and print formats for a small business using ERPNext, improving usability and client-specific workflows.",
-  technologies: ["ERPNext", "Jinja", "Custom Scripts", "Print Format Builder"],
-  client: "Customs Clearance Company",
-  value: "£100",
-  duration: "2 weeks",
-  highlights: [
-    "Created dynamic custom print formats with conditional logic",
-    "Implemented client-specific field customizations and validations",
-    "Enhanced document layout for invoices and delivery notes",
-    "Delivered complete solution under tight budget and timeline",
-  ],
-}
-,
-      {
-  title: "ERPNext Manufacturing & Stock Module Implementation",
-  description:
-    "Implemented ERPNext’s manufacturing and stock modules for a local sticker manufacturing company, streamlining their production and inventory workflows.",
-  technologies: ["ERPNext", "Manufacturing", "Stock", "BOM", "Warehouse Management"],
-  client: "Sticker Manufacturing Firm",
-  value: "$200", 
-  duration: "1 month",
-  highlights: [
-    "Configured Bill of Materials and Work Orders for production",
-    "Set up warehouse structures and item movement tracking",
-    "Trained staff on using manufacturing workflows",
-    "Enabled accurate stock valuation and reporting",
-  ],
-}
-,
-      {
-  title: "HRMS Implementation",
-  description:
-    "Implemented ERPNext’s HRMS module for a boutique law firm, including setup for employee records, leave structures, and basic payroll configuration.",
-  technologies: ["ERPNext", "HRMS", "Leave Management", "Payroll"],
-  client: "Law Firm",
-  value: "$170",
-  duration: "10 days",
-  highlights: [
-    "Deployed HR module covering core employee processes",
-    "Configured leave and attendance systems",
-    "Set up simple payroll for monthly disbursement",
-    "Delivered full implementation under 10-day deadline",
-  ],
-}
-
-
+        title: "Healthcare ERP Customization",
+        description:
+          "Customized ERPNext for a healthcare provider with patient management, appointment scheduling, and billing integration.",
+        technologies: ["ERPNext", "Healthcare Module", "Custom Development", "API Integration"],
+        client: "Healthcare Provider",
+        value: "$28,000",
+        duration: "5 months",
+        highlights: [
+          "Developed HIPAA-compliant patient management system",
+          "Integrated with existing billing software",
+          "Automated appointment scheduling and reminders",
+          "Trained 50+ staff members on the new system",
+        ],
+      },
     ],
   }
 
   const currentProjects = projects[version]
+
+  const handleScrollToContact = () => {
+    const contactSection = document.querySelector("#contact")
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   return (
     <section id="projects" className="py-20">
@@ -193,7 +120,7 @@ export function Projects({ version }: ProjectsProps) {
             {version === "tech" ? "Featured Technical Projects" : "Freelancing Success Stories"}
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {currentProjects.map((project, index) => (
               <Card key={index} className="h-full flex flex-col">
                 <CardHeader>
@@ -245,23 +172,27 @@ export function Projects({ version }: ProjectsProps) {
 
                   <div className="flex gap-3 mt-auto">
                     {version === "tech" && (
-  <>
-    {"github" in project && project.github && (
-      <Button size="sm" variant="outline" asChild>
-        <Link href={project.github} target="_blank">
-          <Github className="mr-2 h-4 w-4"/>
-        </Link>
-      </Button>
-    )}
-  </>
-)}
-
+                      <>
+                        <Button size="sm" variant="outline" asChild>
+                          <a href={project.github || "#"} target="_blank" rel="noopener noreferrer">
+                            <Github className="mr-2 h-4 w-4" />
+                            Code
+                          </a>
+                        </Button>
+                        {"demo" in project && project.demo && (
+                          <Button size="sm" asChild>
+                            <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="mr-2 h-4 w-4" />
+                              Demo
+                            </a>
+                          </Button>
+                        )}
+                      </>
+                    )}
                     {version === "freelancing" && (
-                      <Button size="sm" asChild>
-                        <Link href="#contact">
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Similar Project?
-                        </Link>
+                      <Button size="sm" onClick={handleScrollToContact}>
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Similar Project?
                       </Button>
                     )}
                   </div>

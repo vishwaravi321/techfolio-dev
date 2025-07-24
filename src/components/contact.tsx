@@ -1,12 +1,11 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Button } from "./ui/button"
+import { Input } from "./ui/input"
+import { Textarea } from "./ui/textarea"
 import { Mail, MapPin, Phone, Send, Instagram } from "lucide-react"
 
 export function Contact() {
@@ -36,20 +35,20 @@ export function Contact() {
     {
       icon: <Mail className="h-5 w-5" />,
       label: "Email",
-      value: "vishwaravi321@gmail.com",
-      href: "mailto:vishwaravi321@gmail.com",
+      value: "contact@vishwar.dev",
+      href: "mailto:contact@vishwar.dev",
     },
     {
       icon: <Phone className="h-5 w-5" />,
       label: "Phone",
-      value: "+91 6382741676",
-      href: "tel:+916382741676",
+      value: "+1 (555) 123-4567",
+      href: "tel:+15551234567",
     },
     {
       icon: <Instagram className="h-5 w-5" />,
       label: "Instagram",
-      value: "@cmd.line.junkie",
-      href: "https://instagram.com/cmd.line.junkie",
+      value: "@vishwa_r_dev",
+      href: "https://instagram.com/vishwa_r_dev",
     },
     {
       icon: <MapPin className="h-5 w-5" />,
@@ -84,6 +83,7 @@ export function Contact() {
                           href={info.href}
                           className="text-muted-foreground hover:text-primary transition-colors"
                           target={info.href.startsWith("http") ? "_blank" : undefined}
+                          rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
                         >
                           {info.value}
                         </a>

@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button"
+"use client"
+import { Button } from "./ui/button"
 import { ArrowDown, Download, Github, Linkedin, Mail, Instagram } from "lucide-react"
-import Link from "next/link"
-import type { PortfolioVersion } from "@/app/page"
+import type { PortfolioVersion } from "../App"
 
 interface HeroProps {
   version: PortfolioVersion
@@ -10,8 +10,8 @@ interface HeroProps {
 export function Hero({ version }: HeroProps) {
   const content = {
     tech: {
-      title: "Site Reliability Engineer",
-      subtitle: "ERPNext Specialist",
+      title: "Full-Stack Developer",
+      subtitle: "DevOps & ERPNext Specialist",
       description:
         "Building scalable applications, automating infrastructure, and implementing comprehensive ERP solutions that drive business growth and operational efficiency.",
     },
@@ -24,6 +24,20 @@ export function Hero({ version }: HeroProps) {
   }
 
   const currentContent = content[version]
+
+  const handleScrollToAbout = () => {
+    const aboutSection = document.querySelector("#about")
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
+  const handleScrollToContact = () => {
+    const contactSection = document.querySelector("#contact")
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/30 dark:to-muted/10">
@@ -38,49 +52,54 @@ export function Hero({ version }: HeroProps) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" asChild>
-              <Link href="#contact">
-                <Mail className="mr-2 h-5 w-5" />
-                Get In Touch
-              </Link>
+            <Button size="lg" onClick={handleScrollToContact}>
+              <Mail className="mr-2 h-5 w-5" />
+              Get In Touch
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="/resume.pdf" target="_blank">
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
-              </Link>
+              </a>
             </Button>
           </div>
 
           <div className="flex justify-center space-x-6 mb-12">
-            <Link href="https://github.com/vishwaravi321" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
-              <Github className="h-6 w-6" />
-            </Link>
-            <Link href="https://linkedin.com/in/vishwa-ravichandran" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
-              <Linkedin className="h-6 w-6" />
-            </Link>
-            <Link
-              href="https://instagram.com/cmd.line.junkie"
+            <a
+              href="https://github.com"
               className="text-muted-foreground hover:text-primary transition-colors"
               target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github className="h-6 w-6" />
+            </a>
+            <a
+              href="https://linkedin.com"
+              className="text-muted-foreground hover:text-primary transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin className="h-6 w-6" />
+            </a>
+            <a
+              href="https://instagram.com/vishwa_r_dev"
+              className="text-muted-foreground hover:text-primary transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Instagram className="h-6 w-6" />
-            </Link>
-            <Link
-              href="mailto:vishwaravi321@gmail.com"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              target="_blank"
-            >
+            </a>
+            <a href="mailto:contact@example.com" className="text-muted-foreground hover:text-primary transition-colors">
               <Mail className="h-6 w-6" />
-            </Link>
+            </a>
           </div>
 
-          <Link
-            href="#about"
+          <button
+            onClick={handleScrollToAbout}
             className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowDown className="h-5 w-5 animate-bounce" />
-          </Link>
+          </button>
         </div>
       </div>
     </section>

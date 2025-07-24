@@ -7,8 +7,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Techfolio",
-  description: "Site Reliability Engineer & ERPNext Specialist Portfolio",
+  title: "VISHWA R - Professional Portfolio",
+  description: "DevOps Engineer & ERPNext Specialist Portfolio",
     generator: 'v0.dev'
 }
 
@@ -19,9 +19,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
-      </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}

@@ -10,8 +10,8 @@ interface HeroProps {
 export function Hero({ version }: HeroProps) {
   const content = {
     tech: {
-      title: "Site Reliability Engineer",
-      subtitle: "ERPNext Specialist",
+      title: "Full-Stack Developer",
+      subtitle: "DevOps & ERPNext Specialist",
       description:
         "Building scalable applications, automating infrastructure, and implementing comprehensive ERP solutions that drive business growth and operational efficiency.",
     },
@@ -53,23 +53,21 @@ export function Hero({ version }: HeroProps) {
           </div>
 
           <div className="flex justify-center space-x-6 mb-12">
-            <Link href="https://github.com/vishwaravi321" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
+            <Link href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors">
               <Github className="h-6 w-6" />
             </Link>
-            <Link href="https://linkedin.com/in/vishwa-ravichandran" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
+            <Link href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors">
               <Linkedin className="h-6 w-6" />
             </Link>
             <Link
-              href="https://instagram.com/cmd.line.junkie"
+              href="https://instagram.com/vishwa_r_dev"
               className="text-muted-foreground hover:text-primary transition-colors"
-              target="_blank"
             >
               <Instagram className="h-6 w-6" />
             </Link>
             <Link
-              href="mailto:vishwaravi321@gmail.com"
+              href="mailto:contact@example.com"
               className="text-muted-foreground hover:text-primary transition-colors"
-              target="_blank"
             >
               <Mail className="h-6 w-6" />
             </Link>

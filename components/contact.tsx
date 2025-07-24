@@ -36,20 +36,20 @@ export function Contact() {
     {
       icon: <Mail className="h-5 w-5" />,
       label: "Email",
-      value: "vishwaravi321@gmail.com",
-      href: "mailto:vishwaravi321@gmail.com",
+      value: "contact@vishwar.dev",
+      href: "mailto:contact@vishwar.dev",
     },
     {
       icon: <Phone className="h-5 w-5" />,
       label: "Phone",
-      value: "+91 6382741676",
-      href: "tel:+916382741676",
+      value: "+1 (555) 123-4567",
+      href: "tel:+15551234567",
     },
     {
       icon: <Instagram className="h-5 w-5" />,
       label: "Instagram",
-      value: "@cmd.line.junkie",
-      href: "https://instagram.com/cmd.line.junkie",
+      value: "@vishwa_r_dev",
+      href: "https://instagram.com/vishwa_r_dev",
     },
     {
       icon: <MapPin className="h-5 w-5" />,
