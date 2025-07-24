@@ -42,13 +42,13 @@ export function Header({ version, setVersion }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-sm border-b" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ease-out ${
+        isScrolled ? "bg-background/95 backdrop-blur-sm border-b shadow-lg transform-gpu" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold">
+          <Link href="/" className="text-xl font-bold hover:text-primary transition-all duration-300 hover:scale-105">
             VISHWA R
           </Link>
 
@@ -59,7 +59,7 @@ export function Header({ version, setVersion }: HeaderProps) {
                 variant={version === "tech" ? "default" : "outline"}
                 size="sm"
                 onClick={() => setVersion("tech")}
-                className="flex items-center space-x-2"
+                className="flex items-center space-x-2 transition-all duration-300 hover:scale-105"
               >
                 <Code className="h-4 w-4" />
                 <span>Tech Portfolio</span>
@@ -68,7 +68,7 @@ export function Header({ version, setVersion }: HeaderProps) {
                 variant={version === "freelancing" ? "default" : "outline"}
                 size="sm"
                 onClick={() => setVersion("freelancing")}
-                className="flex items-center space-x-2"
+                className="flex items-center space-x-2 transition-all duration-300 hover:scale-105"
               >
                 <Briefcase className="h-4 w-4" />
                 <span>Freelancing</span>
@@ -84,45 +84,69 @@ export function Header({ version, setVersion }: HeaderProps) {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-muted-foreground hover:text-foreground transition-all duration-300 relative group"
                     >
                       {item.label}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
                     </Link>
                   ))
                 : pageNavItems.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`transition-colors ${
+                      className={`transition-all duration-300 relative group ${
                         pathname === item.href
                           ? "text-foreground font-medium"
                           : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
                       {item.label}
+                      <span
+                        className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                          pathname === item.href ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
+                      />
                     </Link>
                   ))}
             </nav>
-            <ThemeToggle />
+            <div className="animate-fade-in">
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden transition-all duration-300 hover:scale-110"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <div className="relative w-6 h-6">
+              <Menu
+                className={`h-6 w-6 absolute transition-all duration-300 ${isMenuOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"}`}
+              />
+              <X
+                className={`h-6 w-6 absolute transition-all duration-300 ${isMenuOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"}`}
+              />
+            </div>
           </Button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t">
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${
+            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="py-4 border-t">
             {/* Version Selector Mobile - Only show on home page */}
             {isHomePage && version && setVersion && (
-              <div className="flex space-x-2 mb-4">
+              <div className="flex space-x-2 mb-4 animate-slide-down">
                 <Button
                   variant={version === "tech" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setVersion("tech")}
-                  className="flex items-center space-x-2"
+                  className="flex items-center space-x-2 transition-all duration-300 hover:scale-105"
                 >
                   <Code className="h-4 w-4" />
                   <span>Tech</span>
@@ -131,7 +155,7 @@ export function Header({ version, setVersion }: HeaderProps) {
                   variant={version === "freelancing" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setVersion("freelancing")}
-                  className="flex items-center space-x-2"
+                  className="flex items-center space-x-2 transition-all duration-300 hover:scale-105"
                 >
                   <Briefcase className="h-4 w-4" />
                   <span>Freelancing</span>
@@ -140,28 +164,29 @@ export function Header({ version, setVersion }: HeaderProps) {
             )}
 
             {/* Navigation Items */}
-            {(isHomePage ? navItems : pageNavItems).map((item) => (
+            {(isHomePage ? navItems : pageNavItems).map((item, index) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`block py-2 transition-colors ${
+                className={`block py-2 transition-all duration-300 hover:translate-x-2 ${
                   !isHomePage && pathname === item.href
                     ? "text-foreground font-medium"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
+                style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <div className="pt-4 border-t">
+            <div className="pt-4 border-t animate-fade-in">
               <div className="flex justify-between items-center">
                 <span className="text-sm text-muted-foreground">Theme</span>
                 <ThemeToggle />
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </header>
   )

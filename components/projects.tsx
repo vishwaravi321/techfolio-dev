@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge"
 import { ExternalLink, Github, DollarSign, Users, Clock } from "lucide-react"
 import Link from "next/link"
 import type { PortfolioVersion } from "@/app/page"
+import { FadeIn } from "@/components/animations/fade-in"
+import { StaggerContainer } from "@/components/animations/stagger-container"
 
 interface ProjectsProps {
   version: PortfolioVersion
@@ -109,33 +111,41 @@ export function Projects({ version }: ProjectsProps) {
     <section id="projects" className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-            {version === "tech" ? "Featured Technical Projects" : "Freelancing Success Stories"}
-          </h2>
+          <FadeIn>
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
+              {version === "tech" ? "Featured Technical Projects" : "Freelancing Success Stories"}
+            </h2>
+          </FadeIn>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={200}>
             {currentProjects.map((project, index) => (
-              <Card key={index} className="h-full flex flex-col">
-                <CardHeader>
-                  <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
-                  <p className="text-muted-foreground">{project.description}</p>
+              <Card
+                key={index}
+                className="h-full flex flex-col group hover:shadow-xl transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border-2 hover:border-primary/20"
+              >
+                <CardHeader className="relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <CardTitle className="text-xl mb-2 relative z-10 group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </CardTitle>
+                  <p className="text-muted-foreground relative z-10">{project.description}</p>
 
                   {version === "freelancing" && (
-                    <div className="flex flex-wrap gap-4 mt-3 text-sm">
+                    <div className="flex flex-wrap gap-4 mt-3 text-sm relative z-10">
                       {"client" in project && (
-                        <div className="flex items-center gap-1 text-muted-foreground">
+                        <div className="flex items-center gap-1 text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                           <Users className="h-4 w-4" />
                           <span>{project.client}</span>
                         </div>
                       )}
                       {"value" in project && (
-                        <div className="flex items-center gap-1 text-green-600">
+                        <div className="flex items-center gap-1 text-green-600 group-hover:scale-105 transition-transform duration-300">
                           <DollarSign className="h-4 w-4" />
                           <span>{project.value}</span>
                         </div>
                       )}
                       {"duration" in project && (
-                        <div className="flex items-center gap-1 text-muted-foreground">
+                        <div className="flex items-center gap-1 text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                           <Clock className="h-4 w-4" />
                           <span>{project.duration}</span>
                         </div>
@@ -148,7 +158,9 @@ export function Projects({ version }: ProjectsProps) {
                     <h4 className="font-semibold mb-2">Key Highlights:</h4>
                     <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                       {project.highlights.map((highlight, hlIndex) => (
-                        <li key={hlIndex}>{highlight}</li>
+                        <li key={hlIndex} className="group-hover:text-foreground transition-colors duration-300">
+                          {highlight}
+                        </li>
                       ))}
                     </ul>
                   </div>
@@ -156,7 +168,12 @@ export function Projects({ version }: ProjectsProps) {
                   <div className="mb-6">
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="outline" className="text-xs">
+                        <Badge
+                          key={techIndex}
+                          variant="outline"
+                          className="text-xs hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105"
+                          style={{ animationDelay: `${techIndex * 50}ms` }}
+                        >
                           {tech}
                         </Badge>
                       ))}
@@ -166,16 +183,21 @@ export function Projects({ version }: ProjectsProps) {
                   <div className="flex gap-3 mt-auto">
                     {version === "tech" && (
                       <>
-                        <Button size="sm" variant="outline" asChild>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          asChild
+                          className="group/btn hover:scale-105 transition-all duration-300 bg-transparent"
+                        >
                           <Link href={project.github || "#"} target="_blank">
-                            <Github className="mr-2 h-4 w-4" />
+                            <Github className="mr-2 h-4 w-4 group-hover/btn:animate-spin" />
                             Code
                           </Link>
                         </Button>
                         {"demo" in project && project.demo && (
-                          <Button size="sm" asChild>
+                          <Button size="sm" asChild className="group/btn hover:scale-105 transition-all duration-300">
                             <Link href={project.demo} target="_blank">
-                              <ExternalLink className="mr-2 h-4 w-4" />
+                              <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:animate-pulse" />
                               Demo
                             </Link>
                           </Button>
@@ -183,9 +205,9 @@ export function Projects({ version }: ProjectsProps) {
                       </>
                     )}
                     {version === "freelancing" && (
-                      <Button size="sm" asChild>
+                      <Button size="sm" asChild className="group/btn hover:scale-105 transition-all duration-300">
                         <Link href="#contact">
-                          <ExternalLink className="mr-2 h-4 w-4" />
+                          <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:animate-bounce" />
                           Similar Project?
                         </Link>
                       </Button>
@@ -194,7 +216,7 @@ export function Projects({ version }: ProjectsProps) {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </div>
     </section>
